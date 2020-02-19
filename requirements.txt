@@ -4,3 +4,4 @@ torch
 torchvision
 pytoan
 albumentations
+efficientnet-pytorch
