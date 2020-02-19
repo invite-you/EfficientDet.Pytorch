@@ -257,7 +257,7 @@ class CocoDataset(Dataset):
             return annotations
 
         # parse annotations
-        for idx, a in enumerate(coco_annotations):
+        for idx, annot in enumerate(coco_annotations):
 
             minX = float(annot['rbbox']['minX'])
             minY = float(annot['rbbox']['minY'])
