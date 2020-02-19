@@ -300,6 +300,6 @@ class CocoDataset(Dataset):
 if __name__ == '__main__':
     from augmentation import get_augumentation
     dataset = CocoDataset("/content/gdrive/My Drive/findShip/test.pickle",
-                          transform=transforms.Compose([Normalizer(), Augmenter(), Resizer()]) )
+                          transform=get_augumentation(phase='train', width=1024, height=1024))
     sample = dataset[0]
     print('sample: ', sample)
