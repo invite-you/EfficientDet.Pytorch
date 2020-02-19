@@ -41,7 +41,7 @@ class CocoDataset(Dataset):
 
     def load_classes(self):
         # load class names (name -> label)
-        categories = [{'id': 'container'}, {'id': 'oil tanker'}, {'id': 'aircraft carrier'}, {'id': 'maritime vessels'}]
+        categories = [{'id': 1, 'name': 'container'}, {'id': 2, 'name': 'oil tanker'}, {'id': 3, 'name': 'aircraft carrier'}, {'id': 4, 'name': 'maritime vessels'}]
         categories.sort(key=lambda x: x['id'])
 
         self.classes = {}
