@@ -13,7 +13,7 @@ def get_augumentation(phase, width=512, height=512, min_area=0., min_visibility=
                 max_size=width, always_apply=True),
             albu.PadIfNeeded(min_height=height, min_width=width,
                              always_apply=True, border_mode=0, value=[0, 0, 0]),
-            albu.transforms.RandomResizedCrop(
+            albu.RandomSizedCrop(
                 height=height,
                 width=width, p=0.3),
             albu.Flip(),
