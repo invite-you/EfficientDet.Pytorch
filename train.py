@@ -180,16 +180,14 @@ def main_worker(gpu, ngpus_per_node, args):
         args.num_class = train_dataset.num_classes()
     elif(args.dataset == 'COCO'):
         train_dataset = CocoDataset(
-            root_dir=args.dataset_root,
-            set_name='train2017',
+            pickle_file=args.dataset_root,
             transform=transforms.Compose(
                 [
                     Normalizer(),
                     Augmenter(),
                     Resizer()]))
         valid_dataset = CocoDataset(
-            root_dir=args.dataset_root,
-            set_name='val2017',
+            pickle_file=args.dataset_root,
             transform=transforms.Compose(
                 [
                     Normalizer(),
