@@ -37,9 +37,11 @@ parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
 parser.add_argument('--dataset', default='VOC', choices=['VOC', 'COCO'],
                     type=str, help='VOC or COCO')
 parser.add_argument(
-    '--dataset_root',
+    '--dataset_train',
     default='/root/data/VOCdevkit/',
     help='Dataset root directory path [/root/data/VOCdevkit/, /root/data/coco/]')
+parser.add_argument(
+    '--dataset_test')
 parser.add_argument('--network', default='efficientdet-d0', type=str,
                     help='efficientdet-[d0, d1, ..]')
 
@@ -180,14 +182,18 @@ def main_worker(gpu, ngpus_per_node, args):
         args.num_class = train_dataset.num_classes()
     elif(args.dataset == 'COCO'):
         train_dataset = CocoDataset(
-            pickle_file=args.dataset_root,
+            pickle_file=args.dataset_train,
             transform=transforms.Compose(
                 [
                     Normalizer(),
                     Augmenter(),
                     Resizer()]))
+        if args.dataset_test:
+            vaild_dataset = args.dataset_test
+        else:
+            vaild_dataset = args.dataset_train
         valid_dataset = CocoDataset(
-            pickle_file=args.dataset_root,
+            pickle_file=vaild_dataset,
             transform=transforms.Compose(
                 [
                     Normalizer(),
