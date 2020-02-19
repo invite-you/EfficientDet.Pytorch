@@ -100,8 +100,8 @@ def train(train_loader, model, scheduler, optimizer, epoch, args):
     start = time.time()
     total_loss = []
     model.train()
-    model.module.is_training = True
-    model.module.freeze_bn()
+    model.is_training = True
+    model.freeze_bn()
     optimizer.zero_grad()
     for idx, (images, annotations) in enumerate(train_loader):
         images = images.cuda().float()
