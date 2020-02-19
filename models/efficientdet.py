@@ -1,7 +1,8 @@
 import torch
 import torch.nn as nn
 import math
-from models.efficientnet import EfficientNet
+#from models.efficientnet import EfficientNet
+from efficientnet_pytorch import EfficientNet
 from models.bifpn import BIFPN
 from .retinahead import RetinaHead
 from models.module import RegressionModel, ClassificationModel, Anchors, ClipBoxes, BBoxTransform
