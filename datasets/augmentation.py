@@ -1,4 +1,4 @@
-import albumentations.augmentations as albu
+import albumentations as albu
 from albumentations.pytorch.transforms import ToTensor
 import torch
 import numpy as np
