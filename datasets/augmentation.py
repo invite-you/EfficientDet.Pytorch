@@ -9,15 +9,15 @@ def get_augumentation(phase, width=512, height=512, min_area=0., min_visibility=
     list_transforms = []
     if phase == 'train':
         list_transforms.extend([
-            albu.augmentations.LongestMaxSize(
+            albu.LongestMaxSize(
                 max_size=width, always_apply=True),
             albu.PadIfNeeded(min_height=height, min_width=width,
                              always_apply=True, border_mode=0, value=[0, 0, 0]),
-            albu.augmentations.RandomResizedCrop(
+            albu.RandomResizedCrop(
                 height=height,
                 width=width, p=0.3),
-            albu.augmentations.Flip(),
-            albu.augmentations.Transpose(),
+            albu.Flip(),
+            albu.Transpose(),
             albu.OneOf([
                 albu.RandomBrightnessContrast(brightness_limit=0.5,
                                               contrast_limit=0.4),
